@@ -1,0 +1,168 @@
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{%
+  \item\small{#1}
+}
+
+\newcommand{\classesList}[4]{%
+  \item\small{#1 #2 #3 #4}
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \item
+  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textbf{\small #2} \\
+    \textit{\small #3} & \textit{\small #4} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeSubSubheading}[2]{%
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \textit{\small #1} & \textit{\small #2} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeProjectHeading}[2]{%
+  \item
+  \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+    \small #1 & \textbf{\small #2} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}
+
+\renewcommand\labelitemi{{$\vcenter{\hbox{\tiny$\bullet$}}$}}
+\renewcommand\labelitemii{{$\vcenter{\hbox{\tiny$\bullet$}}$}}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \scshape Sidhartha Sunkasari} \\ 
+    \small \raisebox{-0.1\height}\faPhone\ 681-212-7404 ~ 
+    \href{mailto:sidharthasunkasari96@gmail.com}{\raisebox{-0.2\height}\faEnvelope\ sidharthasunkasari96@gmail.com} ~
+    \href{https://linkedin.com/in/sidhu47h/}{\raisebox{-0.2\height}\faLinkedin\ https://linkedin.com/in/sidhu47h/} ~
+    \href{https://github.com/sidhu47}{\raisebox{-0.2\height}\faGithub\ https://github.com/sidhu47}
+\end{center}
+\section{About}
+{\fontsize{10pt}{10pt}\selectfont
+Results-driven Software Development Engineer with a Master's in Computer Science and over 2 years of professional experience at Amazon. Proven expertise in designing, developing, and maintaining scalable distributed systems and microservices using Agile methodologies. Skilled in full-stack development, cloud computing (AWS), DevOps practices (Docker, CI/CD, Jenkins), Test Driven Development (TDD), and performance optimization. Adept at leveraging data structures, algorithms, and design patterns to solve complex problems. Seeking challenging opportunities in software engineering to drive innovation and operational excellence.
+}
+\section{Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small\item{ \textbf{Programming Languages:} C, C++, Python, Java, Scala, JavaScript \\
+\textbf{Web Development:} HTML, CSS, TailwindCSS, Bootstrap, React, Node.js, Express.js, RESTful APIs \\
+\textbf{Back-end Frameworks:} Spring Framework, Spring Boot, Spring MVC, Microservices, Hibernate, JPA, Jackson, Guice \\
+\textbf{Testing \& QA:} JUnit, Mockito, Postman, Test Driven Development (TDD) \\
+\textbf{DevOps \& CI/CD:} Docker, Git, GitLab CI/CD, Jenkins, Agile, Scrum \\
+\textbf{Databases:} MySQL, PostgreSQL, MongoDB, Firestore, SQL, NoSQL \\
+\textbf{Cloud Technologies:} AWS (EC2, ECS, ELB, CloudWatch, IAM, SNS, SQS, DynamoDB, VPC, Route 53, S3) \\
+\textbf{Expertise:} Distributed Systems, Microservices Architecture, Software Design Patterns, System Design, Data Structures \& Algorithms, Performance Optimization, Cybersecurity, Full-Stack Development }
+\end{itemize}
+\section{Experience}
+\resumeSubHeadingListStart
+\resumeSubheading
+      {Amazon}{Nov'21 -- July'23}
+      {Software Development Engineer}{}
+      \resumeItemListStart
+          \resumeItem{\textbf{Technologies:} Java, Spring Boot, Scala, RESTful APIs}}
+\resumeItem{Engineered a risk analysis system recovering $50M in bad debt through customer behavior analytics, leveraging distributed system design and microservices architecture.}
+\resumeItem{Developed a scalable data model increasing return capacity from 1,000 to 1 million per contract, optimizing database performance and resource allocation.}
+\resumeItem{Reduced API latency by 50% via plugin migration and performance tuning, ensuring robust and backward-compatible RESTful API endpoints.}
+\resumeItem{Conducted load testing and implemented automated scaling strategies to maintain high availability during peak traffic.}
+\resumeItem{Designed multi-tier return questionnaires for softline products in the EU, enhancing data capture and customer feedback.}
+\resumeItem{Led process automation and operational excellence initiatives, aligning with Agile and DevOps best practices.}
+      \resumeItemListEnd
+\resumeSubheading
+      {WVU-Industrial Assessment Center}{Jan'24 -- Dec'24}
+      {Graduate Research Assistant - Software Engineer}{}
+      \resumeItemListStart
+          \resumeItem{\textbf{Technologies:} Java, Python, IT Support, Legacy Systems}}
+\resumeItem{Managed and maintained IAC websites to ensure optimal performance, accessibility, and timely updates using modern web development techniques.}
+\resumeItem{Provided comprehensive IT support and troubleshooting for legacy systems, ensuring compatibility and minimizing downtime.}
+      \resumeItemListEnd
+\resumeSubheading
+      {West Virginia University}{Aug'23 -- Dec'23}
+      {Graduate Teaching Assistant - Instructor}{}
+      \resumeItemListStart
+          \resumeItem{\textbf{Technologies:} Data Analysis, Microsoft Office Suite}}
+\resumeItem{Instructed undergraduate students in CS101, focusing on data analysis, Python programming, and visualization techniques to enhance computational problem-solving skills.}
+      \resumeItemListEnd
+\resumeSubHeadingListEnd
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+      {West Virginia University}{Aug'23 -- Dec'24}
+      {Masters in Computer Science}{Morgantown, West Virginia, United States}
+\resumeSubheading
+      {Jawaharlal Nehru Technological University}{July'15 -- Aug'20}
+      {Bachelor of Technology in Computer Science + MBA (Dual-Degree)}{Hyderabad, India}
+\resumeSubHeadingListEnd
+\section{Projects}
+\resumeSubHeadingListStart
+\resumeProjectHeading
+          {\textbf{Projecting Annotations for NER using BERT Transformer} $|$ \emph{Python, Huggingface, Transformers, Google Colab}}{Dec'23}
+          \resumeItemListStart
+              \resumeItem{Developed a Natural Language Processing (NLP) solution by fine-tuning a BERT transformer for Named Entity Recognition (NER) on the conllpp dataset, enhancing accuracy for low-resource languages. Keywords: BERT, NER, NLP, Machine Learning, Deep Learning, Hugging Face.}
+          \resumeItemListEnd
+\resumeProjectHeading
+          {\textbf{Online Appointment Booking System} $|$ \emph{Node.js, Express.js, JavaScript, Bootstrap, Firestore}}{Sep'21}
+          \resumeItemListStart
+              \resumeItem{Designed and implemented a responsive web application for appointment scheduling across multiple time zones, integrating full CRUD functionality and a RESTful API with a NoSQL database. Keywords: Node.js, Express.js, REST API, NoSQL, CRUD, Responsive Design.}
+          \resumeItemListEnd
+\resumeProjectHeading
+          {\textbf{Understanding the Drug Epidemic in West Virginia} \textbf{\href{https://sidhu-sidhartha.observablehq.cloud/test}{(Live Demo)}} $|$ \emph{React, Observable, D3.js}}{Dec'24}
+          \resumeItemListStart
+              \resumeItem{Created interactive dashboards and data visualizations to analyze socio-economic factors and drug overdose trends using React, Observable, and D3.js. Keywords: Data Visualization, React, D3.js, Observable, Data Analysis, Dashboard.}
+          \resumeItemListEnd
+\resumeSubHeadingListEnd
+\section{Additional Experiences and Awards}
+\resumeSubHeadingListStart
+\resumeItemListStart
+\resumeItem{Solved 250+ algorithm and data structure problems on LeetCode. Keywords: Problem Solving, Algorithms, Data Structures.}
+\resumeItem{Coordinated and developed problem sets for the annual programming competition "Code Poetry" at JNTU, demonstrating leadership and collaborative skills. Keywords: Leadership, Teamwork, Programming Competitions.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+\end{document}

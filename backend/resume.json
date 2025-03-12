@@ -1,0 +1,171 @@
+{
+    "name": "Sidhartha Sunkasari",
+    "contact": {
+      "phone": "681-212-7404",
+      "email": "sidharthasunkasari96@gmail.com",
+      "linkedin": "linkedin.com/in/sidhu47h",
+      "github": "github.com/sidhu47"
+    },
+    "about": "Experienced Software Engineer with a Master’s degree in Computer Science and 2 years of experience at Amazon. Skilled in designing and maintaining large-scale distributed systems and end-to-end microservices. Passionate about leveraging cloud computing, AWS, Test Driven Development (TDD), CI/CD, and configuration-driven UI to deliver scalable and robust solutions. Actively seeking challenging software engineering opportunities where I can drive innovation and growth.",
+    "skills": {
+      "programmingLanguages": [
+        "C",
+        "C++",
+        "Python",
+        "Java",
+        "Scala",
+        "JavaScript"
+      ],
+      "frontEnd": [
+        "HTML",
+        "CSS",
+        "TailwindCSS",
+        "Bootstrap",
+        "React",
+        "Observable Framework",
+        "Observable Plot",
+        "D3.js"
+      ],
+      "backEndFrameworks": [
+        "Spring Framework",
+        "Spring Boot",
+        "Spring MVC",
+        "Spring Microservices",
+        "Express.JS",
+        "Jackson",
+        "Guice",
+        "Hibernate",
+        "JPA"
+      ],
+      "testing": [
+        "JUnit",
+        "Mockito",
+        "Postman"
+      ],
+      "devOps": [
+        "Docker",
+        "GitLab CI/CD",
+        "Jenkins",
+        "Git"
+      ],
+      "databases": [
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB",
+        "Firestore"
+      ],
+      "cloudTechnologies": [
+        "AWS",
+        "ECS",
+        "EC2",
+        "ELB",
+        "Cloudwatch",
+        "IAM",
+        "SNS",
+        "SQS",
+        "DynamoDB",
+        "Amazon VPC",
+        "Amazon Route 53",
+        "AWS S3"
+      ],
+      "additionalExpertise": [
+        "Data Structures and Algorithms",
+        "Operating Systems",
+        "Database Management",
+        "System Design and Software Architecture",
+        "Cybersecurity",
+        "Backend Development",
+        "Frontend Development",
+        "DevOps",
+        "Network Security",
+        "Design Patterns",
+        "CI/CD",
+        "Multithreaded Programming",
+        "Parallel Programming",
+        "AI",
+        "ML",
+        "Config-Driven Development (CDD)",
+        "Test-Driven Development (TDD)",
+        "Agile Software Development",
+        "Linux",
+        "JVM"
+      ]
+    },
+    "experience": [
+      {
+        "company": "Amazon",
+        "position": "Software Development Engineer",
+        "location": null,
+        "employmentPeriod": "Nov 2021 – July 2023",
+        "technologies": ["Java", "Spring Boot", "Scala", "RESTful API"],
+        "responsibilities": [
+          "Implemented a system that aims at recovering $50M in bad debt by analyzing customer risk factors.",
+          "Implemented new data model that scaled item return capacity from 1,000 to 1 million in a single return contract.",
+          "Reduced API latency by 50% through plugin migration to support the new data model for improved performance and ensured backward compatibility.",
+          "Ensured system stability during peak traffic with optimized resource allocation by load testing and scaling the infrastructure.",
+          "Developed multi-tier return reason questionnaires for softline products in EU region.",
+          "Led operational excellence initiatives, driving process automation and implementing industry best practices to optimize team workflows."
+        ]
+      },
+      {
+        "company": "WVU-Industrial Assessment Center",
+        "position": "Graduate Research Assistantship - Software Engineer",
+        "location": null,
+        "employmentPeriod": "Jan 2024 – Dec 2024",
+        "technologies": ["Java", "Python", "Word", "HOBO", "Excel", "VMs"],
+        "responsibilities": [
+          "Managed and maintained IAC websites, ensuring functionality, user-friendliness, and timely updates to support industrial assessment operations.",
+          "Provided IT support for troubleshooting, maintaining infrastructure to maintain compatibility of older software."
+        ]
+      },
+      {
+        "company": "West Virginia University",
+        "position": "Graduate Teaching Assistantship - Instructor",
+        "location": "Morgantown, West Virginia, United States",
+        "employmentPeriod": "Aug 2023 – Dec 2023",
+        "technologies": ["Microsoft Word", "Excel", "Microsoft Access", "PowerPoint"],
+        "responsibilities": [
+          "Taught CS101 (Introductory course in Data Analysis) to undergraduate students as part of Graduate Teaching Assistantship."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "West Virginia University",
+        "degree": "Masters in Computer Science",
+        "location": "Morgantown, West Virginia, United States",
+        "period": "Aug 2023 – Dec 2024"
+      },
+      {
+        "institution": "Jawaharlal Nehru Technological University",
+        "degree": "Bachelor of Technology in Computer Science + MBA (Dual-Degree)",
+        "location": "Hyderabad, India",
+        "period": "July 2015 – Aug 2020"
+      }
+    ],
+    "projects": [
+      {
+        "name": "Projecting Annotations for NER using BERT Transformer",
+        "technologies": ["Python", "HuggingFace", "Transformers", "Google Colab"],
+        "date": "Dec 2023",
+        "description": "Utilized Named Entity Recognition (NER) to annotate the conllpp dataset by fine-tuning a BERT model. Designed a framework to extend this capability to low-resource languages."
+      },
+      {
+        "name": "Online Appointment Booking System",
+        "technologies": ["Node.JS", "Express.JS", "JavaScript", "Bootstrap", "Firestore"],
+        "date": "Sep 2021",
+        "description": "Developed an online appointment booking system supporting full CRUD operations in a NoSQL database, enabling users to schedule appointments across multiple time zones."
+      },
+      {
+        "name": "Understanding the Drug Epidemic in West Virginia",
+        "technologies": ["React", "Observable Framework", "Observable Plot", "D3.js"],
+        "date": "Dec 2024",
+        "description": "Created interactive dashboards to visualize the relationship between socio-economic factors and drug abuse–related overdoses at the county level."
+      }
+    ],
+    "additionalExperiencesAndAwards": [
+      "Solved 250+ problems on LeetCode (Handle: sidhu47).",
+      "Coordinated and created problem sets for the annual programming competition of JNTU \"Code Poetry\"."
+    ]
+  }
+  
