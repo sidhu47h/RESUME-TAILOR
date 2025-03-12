@@ -1,0 +1,16 @@
+# Ignore Node modules (React frontend)
+frontend/node_modules/
+
+# Ignore Python virtual environment and cache (Flask backend)
+backend/venv/
+backend/__pycache__/
+backend/*.py[cod]
+
+# Optional: Ignore environment variable files in backend
+backend/.env
+backend/.env.*
+
+# Ignore editor-specific files (optional)
+.vscode/
+.idea/
+*.swp
