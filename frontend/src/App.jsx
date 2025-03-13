@@ -10,7 +10,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const res = await fetch('https://resume-tailor-backend.vercel.app/generate-resume', {
+        const res = await fetch('https://resume-tailor-flask.vercel.app//generate-resume', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
