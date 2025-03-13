@@ -28,11 +28,12 @@ def create_prompt(resume, job_description):
     1. The contact information, education, awards, and achievements remain unchanged.
     2. In work experience, keep the company names, positions, and employment periods the same.
     3. Update only the responsibilities in work experience to be ATS-friendly using keywords from the job description.
-    4. Ensure each job has at least 5 bullet points for responsibilities (Amazon should have 8–10).
-    5. Tailor the 'about', 'skills', and 'projects' sections to align with the job requirements.
-    6. In the 'skills' section, add any relevant skills and technologies from the job description that are not already present.
-    7. For each job, update the "technologies" list to include any additional relevant technologies from the job description.
-    8. Do not introduce any random jargon.
+    4. Don't change the responsibilities of the work experience completely, just tailor them to be more relevant to the job description and add more points if needed.
+    5. Ensure each job has at least 5 bullet points for responsibilities (Amazon should have 8–10).
+    6. Tailor the 'about', 'skills', and 'projects' sections to align with the job requirements.
+    7. In the 'skills' section, add any relevant skills and technologies from the job description that are not already present.
+    8. For each job, update the "technologies" list to include any additional relevant technologies from the job description.
+    9. Do not introduce any random jargon.
     
     IMPORTANT: Return ONLY the modified JSON object without any additional text.
     """
@@ -44,11 +45,12 @@ Follow these rules to tailor the resume for the job description:
 1. The contact information, education, awards, and achievements must remain unchanged.
 2. For the work experience section, keep the company names, positions, and employment periods as they are.
 3. Update only the responsibilities in work experience, making them ATS-friendly by incorporating relevant keywords from the job description.
-4. Ensure each job has at least 5 bullet points for responsibilities, and for the Amazon role, include at least 8 to 10 bullet points.
-5. Additionally, adjust the 'about', 'skills', and 'projects' sections to align with the job requirements.
-6. In the 'skills' section, add any relevant skills and technologies mentioned in the job description that are not already present. Merge them appropriately with the existing skills.
-7. For each job in the "experience" section, update the "technologies" list to include any additional relevant technologies mentioned in the job description, while preserving the existing entries.
-8. Do not introduce any random jargon; only refine the existing details.
+4. Don't change the responsibilities of the work experience completely, just tailor them to be more relevant to the job description and add more points if needed.
+5. Ensure each job has at least 5 bullet points for responsibilities, and for the Amazon role, include at least 8 to 10 bullet points.
+6. Additionally, adjust the 'about', 'skills', and 'projects' sections to align with the job requirements.
+7. In the 'skills' section, add any relevant skills and technologies mentioned in the job description that are not already present. Merge them appropriately with the existing skills.
+8. For each job in the "experience" section, update the "technologies" list to include any additional relevant technologies mentioned in the job description, while preserving the existing entries.
+9. Do not introduce any random jargon; only refine the existing details.
 
 IMPORTANT: Return ONLY the modified JSON object. Do not include any explanation or markdown formatting.
 

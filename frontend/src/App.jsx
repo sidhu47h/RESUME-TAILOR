@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './App.css'; // Ensure you have some basic styles
+// import MockData  from './MockData';
 
 function App() {
     const [jobDescription, setJobDescription] = useState('');
-    const [response, setResponse] = useState('');
+    const [response, setResponse] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,6 +18,8 @@ function App() {
                 body: JSON.stringify({ description: jobDescription }), // This handles escaping
             });
             const data = await res.json();
+            
+            // const data = MockData;
             setResponse(data); // Adjust based on your response structure
         } catch (error) {
             console.error('Error:', error);
@@ -24,8 +27,8 @@ function App() {
     };
 
     return (
-        <div className="app-container" style={{ display: 'flex' }}>
-            <div className="form-section" style={{ flex: 1, padding: '20px' }}>
+        <div className="app-container">
+            <div className="form-section">
                 <h2>Job Description Form</h2>
                 <form onSubmit={handleSubmit}>
                     <textarea
@@ -33,14 +36,19 @@ function App() {
                         onChange={(e) => setJobDescription(e.target.value)}
                         placeholder="Paste job description here..."
                         rows="10"
-                        style={{ width: '100%' }}
                     />
-                    <button type="submit">Submit</button>
+                    <button type="submit">Generate Resume</button>
                 </form>
             </div>
-            <div className="response-section" style={{ flex: 1, padding: '20px' }}>
-                <h2>Response</h2>
-                <pre>{JSON.stringify(response, null, 2)}</pre>
+            <div className="response-container">
+                <div className="response-section">
+                    <h2>JSON Response</h2>
+                    <pre>{response?.json ? JSON.stringify(response.json, null, 2) : 'No response yet'}</pre>
+                </div>
+                <div className="response-section">
+                    <h2>Raw LaTeX</h2>
+                    <pre className="latex-content">{response?.latex ? String(response.latex) : 'No LaTeX content yet'}</pre>
+                </div>
             </div>
         </div>
     );

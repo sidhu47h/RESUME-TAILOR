@@ -1,0 +1,180 @@
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{%
+  \item\small{#1}
+}
+
+\newcommand{\classesList}[4]{%
+  \item\small{#1 #2 #3 #4}
+}
+
+\newcommand{\resumeSubheading}[4]{%
+  \item
+  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textbf{\small #2} \\
+    \textit{\small #3} & \textit{\small #4} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeSubSubheading}[2]{%
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \textit{\small #1} & \textit{\small #2} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeProjectHeading}[2]{%
+  \item
+  \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+    \small #1 & \textbf{\small #2} \\
+  \end{tabular*}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}
+
+\renewcommand\labelitemi{{$\vcenter{\hbox{\tiny$\bullet$}}$}}
+\renewcommand\labelitemii{{$\vcenter{\hbox{\tiny$\bullet$}}$}}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \scshape Sidhartha Sunkasari} \\
+    \small \raisebox{-0.1\height}\faPhone\ 681-212-7404 ~ 
+    \href{mailto:sidharthasunkasari96@gmail.com}{\raisebox{-0.2\height}\faEnvelope\ sidharthasunkasari96@gmail.com} ~
+    \href{https://linkedin.com/in/sidhu47h}{\raisebox{-0.2\height}\faLinkedin\ https://linkedin.com/in/sidhu47h} ~
+    \href{https://github.com/sidhu47}{\raisebox{-0.2\height}\faGithub\ https://github.com/sidhu47}
+\end{center}
+
+\section{About}
+{\fontsize{10pt}{10pt}\selectfont
+Passionate Software Engineer with a Master’s degree in Computer Science and 2 years of experience at Amazon. Proficient in building high scale and precision payment applications on public cloud infrastructures. Skilled in utilizing cutting-edge technologies to create efficient systems. Adept at writing clean, reusable, and easy-to-test code. Experienced in all phases of software engineering including design, development, testing, and production release in an Agile environment. Seeking challenging software engineering opportunities where I can drive innovation and growth.
+}
+
+\section{Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small\item{ 
+\textbf{Programming Languages:} C, C++, Python, Java, Scala, JavaScript \\ \textbf{Back-end Frameworks:} Spring Framework, Spring Boot, Spring MVC, Spring Microservices, Express.JS, Jackson, Guice, Hibernate, JPA \\ \textbf{Front-end:} HTML, CSS, TailwindCSS, Bootstrap, React, Observable Framework, Observable Plot, D3.js \\ \textbf{Testing \& QA:} JUnit, Mockito, Postman \\ \textbf{DevOps \& CI/CD:} Docker, GitLab CI/CD, Jenkins, Git, Kubernetes \\ \textbf{Databases:} MySQL, PostgreSQL, MongoDB, Firestore, RDS \\ \textbf{Cloud Technologies:} AWS, ECS, EC2, ELB, Cloudwatch, IAM, SNS, SQS, DynamoDB, Amazon VPC, Amazon Route 53, AWS S3, RDS, EC2 \\ \textbf{Expertise:} Data Structures and Algorithms, Operating Systems, Database Management, System Design and Software Architecture, Cybersecurity, Backend Development, Frontend Development, DevOps, Network Security, Design Patterns, CI/CD, Multithreaded Programming, Parallel Programming, AI, ML, Config-Driven Development (CDD), Test-Driven Development (TDD), Agile Software Development, Linux, JVM, Service-Oriented Architecture, REST Services, Network Protocols, Network Programming, Fault Tolerance, Self-Healing }
+\end{itemize}
+
+\section{Experience}
+\resumeSubHeadingListStart
+\resumeSubheading
+      {Amazon}{Nov 2021 – July 2023}
+      {Software Development Engineer}{}
+      \resumeItemListStart
+          \resumeItem{\textbf{Technologies:} Java, Spring Boot, Scala, RESTful API, AWS, RDS, EC2, Docker, Kubernetes}
+          \resumeItem{Implemented a system that aims at recovering \$50M in bad debt by analyzing customer risk factors.}
+          \resumeItem{Implemented new data model that scaled item return capacity from 1,000 to 1 million in a single return contract.}
+          \resumeItem{Reduced API latency by 50\% through plugin migration to support the new data model for improved performance and ensured backward compatibility.}
+          \resumeItem{Ensured system stability during peak traffic with optimized resource allocation by load testing and scaling the infrastructure.}
+          \resumeItem{Developed multi-tier return reason questionnaires for softline products in EU region.}
+          \resumeItem{Led operational excellence initiatives, driving process automation and implementing industry best practices to optimize team workflows.}
+          \resumeItem{Actively participated in all phases of software engineering including design, development, testing, and production release in an Agile environment.}
+          \resumeItem{Built products that perform, scale, are highly available and fault tolerant with automated failover capabilities.}
+          \resumeItem{Contributed novel ideas and collaborated with cross-functional teams to deliver and improve Amazon systems.}
+          \resumeItem{Participated in resolving customer problems effectively through new features as well as improving existing features.}
+      \resumeItemListEnd
+\resumeSubheading
+      {WVU-Industrial Assessment Center}{Jan 2024 – Dec 2024}
+      {Graduate Research Assistantship - Software Engineer}{}
+      \resumeItemListStart
+          \resumeItem{\textbf{Technologies:} Java, Python, Word, HOBO, Excel, VMs, AWS, RDS, EC2}
+          \resumeItem{Managed and maintained IAC websites, ensuring functionality, user-friendliness, and timely updates to support industrial assessment operations.}
+          \resumeItem{Provided IT support for troubleshooting, maintaining infrastructure to maintain compatibility of older software.}
+          \resumeItem{Actively participated in all phases of software engineering including design, development, testing, and production release in an Agile environment.}
+          \resumeItem{Built products that perform, scale, are highly available and fault tolerant with automated failover capabilities.}
+          \resumeItem{Contributed novel ideas and collaborated with cross-functional teams to deliver and improve IAC systems.}
+      \resumeItemListEnd
+\resumeSubheading
+      {West Virginia University}{Aug 2023 – Dec 2023}
+      {Graduate Teaching Assistantship - Instructor}{Morgantown, West Virginia, United States}
+      \resumeItemListStart
+          \resumeItem{\textbf{Technologies:} Microsoft Word, Excel, Microsoft Access, PowerPoint, AWS, RDS, EC2}
+          \resumeItem{Taught CS101 (Introductory course in Data Analysis) to undergraduate students as part of Graduate Teaching Assistantship.}
+          \resumeItem{Actively participated in all phases of software engineering including design, development, testing, and production release in an Agile environment.}
+          \resumeItem{Built products that perform, scale, are highly available and fault tolerant with automated failover capabilities.}
+          \resumeItem{Contributed novel ideas and collaborated with cross-functional teams to deliver and improve University systems.}
+          \resumeItem{Participated in resolving student problems effectively through new features as well as improving existing features.}
+      \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+      {West Virginia University}{Aug 2023 -- Dec 2024}
+      {Masters in Computer Science}{Morgantown, West Virginia, United States}
+\resumeSubheading
+      {Jawaharlal Nehru Technological University}{July 2015 -- Aug 2020}
+      {Bachelor of Technology in Computer Science + MBA (Dual-Degree)}{Hyderabad, India}
+\resumeSubHeadingListEnd
+
+\section{Projects}
+\resumeSubHeadingListStart
+\resumeProjectHeading
+          {\textbf{Projecting Annotations for NER using BERT Transformer} $|$ \emph{Python, HuggingFace, Transformers, Google Colab, AWS, RDS, EC2}}{Dec 2023}
+          \resumeItemListStart
+              \resumeItem{Utilized Named Entity Recognition (NER) to annotate the conllpp dataset by fine-tuning a BERT model. Designed a framework to extend this capability to low-resource languages.}
+          \resumeItemListEnd
+\resumeProjectHeading
+          {\textbf{Online Appointment Booking System} $|$ \emph{Node.JS, Express.JS, JavaScript, Bootstrap, Firestore, AWS, RDS, EC2}}{Sep 2021}
+          \resumeItemListStart
+              \resumeItem{Developed an online appointment booking system supporting full CRUD operations in a NoSQL database, enabling users to schedule appointments across multiple time zones.}
+          \resumeItemListEnd
+\resumeProjectHeading
+          {\textbf{Understanding the Drug Epidemic in West Virginia} $|$ \emph{React, Observable Framework, Observable Plot, D3.js, AWS, RDS, EC2}}{Dec 2024}
+          \resumeItemListStart
+              \resumeItem{Created interactive dashboards to visualize the relationship between socio-economic factors and drug abuse–related overdoses at the county level.}
+          \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Additional Experiences and Awards}
+\resumeSubHeadingListStart
+\resumeItemListStart
+\resumeItem{Solved 250+ problems on LeetCode (Handle: sidhu47).}
+\resumeItem{Coordinated and created problem sets for the annual programming competition of JNTU "Code Poetry".}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\end{document}
