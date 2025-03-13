@@ -10,8 +10,7 @@ from resume_stitcher import generate_latex  # Import the generate_latex function
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
-
+CORS(app, resources={r"/*": {"origins": "https://resume-tailor-amber.vercel.app"}})
 # Set your OpenAI API key from the environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
