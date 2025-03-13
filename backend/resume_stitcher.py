@@ -1,261 +1,253 @@
-def generate_header():
-    """Generate the LaTeX header with document class and package imports."""
-    return r"""\documentclass[letterpaper,10.5pt]{article}
+def generate_latex(data):
+    def escape_latex(text):
+        """
+        Escape LaTeX-sensitive characters in text.
+        """
+        if not isinstance(text, str):
+            return text
+        replacements = {
+            '\\': r'\textbackslash{}',
+            '&': r'\&',
+            '%': r'\%',
+            '$': r'\$',
+            '#': r'\#',
+            '_': r'\_',
+            '{': r'\{',
+            '}': r'\}',
+            '~': r'\textasciitilde{}',
+            '^': r'\textasciicircum{}'
+        }
+        for char, repl in replacements.items():
+            text = text.replace(char, repl)
+        return text
 
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage{fontawesome5}
-\usepackage{multicol}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
-\input{glyphtounicode}
+    # ------------------ Header (Contact and Name) ------------------
+    header = []
+    header.append(r"\begin{center}")
+    name = escape_latex(data.get("name", ""))
+    header.append(f"    {{\\Huge \\scshape {name}}} \\\\")
+    contact = data.get("contact", {})
+    phone = escape_latex(contact.get("phone", ""))
+    email = escape_latex(contact.get("email", ""))
+    linkedin = escape_latex(contact.get("linkedin", ""))
+    github = escape_latex(contact.get("github", ""))
+    # If not provided as a URL, prepend protocol.
+    linkedin_url = linkedin if linkedin.startswith("http") else "https://" + linkedin
+    github_url = github if github.startswith("http") else "https://" + github
+    header.append(f"    \\small \\raisebox{{-0.1\\height}}\\faPhone\\ {phone} ~ ")
+    header.append(f"    \\href{{mailto:{email}}}{{\\raisebox{{-0.2\\height}}\\faEnvelope\\ {email}}} ~")
+    header.append(f"    \\href{{{linkedin_url}}}{{\\raisebox{{-0.2\\height}}\\faLinkedin\\ {linkedin_url}}} ~")
+    header.append(f"    \\href{{{github_url}}}{{\\raisebox{{-0.2\\height}}\\faGithub\\ {github_url}}}")
+    header.append(r"\end{center}")
+    header.append("")  # Blank line after header
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+    # ------------------ About Section ------------------
+    about_section = []
+    about_section.append(r"\section{About}")
+    about_text = escape_latex(data.get("about", ""))
+    about_section.append(r"{\fontsize{10pt}{10pt}\selectfont")
+    about_section.append(f"{about_text}")
+    about_section.append("}")
+    about_section.append("")
 
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
-\addtolength{\topmargin}{-0.7in}
-\addtolength{\textheight}{1.4in}
-
-\urlstyle{same}
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
-
-\titleformat{\section}{
-  \scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule]
-
-\pdfgentounicode=1
-
-\newcommand{\resumeItem}[1]{%
-  \item\small{#1}
-}
-
-\newcommand{\classesList}[4]{%
-  \item\small{#1 #2 #3 #4}
-}
-
-\newcommand{\resumeSubheading}[4]{%
-  \item
-  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1} & \textbf{\small #2} \\
-    \textit{\small #3} & \textit{\small #4} \\
-  \end{tabular*}
-}
-
-\newcommand{\resumeSubSubheading}[2]{%
-  \item
-  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    \textit{\small #1} & \textit{\small #2} \\
-  \end{tabular*}
-}
-
-\newcommand{\resumeProjectHeading}[2]{%
-  \item
-  \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
-    \small #1 & \textbf{\small #2} \\
-  \end{tabular*}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}
-
-\renewcommand\labelitemi{{$\vcenter{\hbox{\tiny$\bullet$}}$}}
-\renewcommand\labelitemii{{$\vcenter{\hbox{\tiny$\bullet$}}$}}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}}
-
-\begin{document}
-"""
-
-def generate_contact_section(resume):
-    """Generate the contact information section."""
-    name = resume.get("name", "")
-    contact = resume.get("contact", {})
-    
-    contact_items = []
-    if contact.get("phone"):
-        contact_items.append(r"\raisebox{-0.1\height}\faPhone\ " + contact["phone"])
-    if contact.get("email"):
-        contact_items.append(r"\href{mailto:" + contact["email"] + r"}{\raisebox{-0.2\height}\faEnvelope\ " + contact["email"] + "}")
-    if contact.get("linkedin"):
-        linkedin_url = "https://" + contact["linkedin"] if not contact["linkedin"].startswith("http") else contact["linkedin"]
-        contact_items.append(r"\href{" + linkedin_url + r"}{\raisebox{-0.2\height}\faLinkedin\ " + linkedin_url + "}")
-    if contact.get("github"):
-        github_url = "https://" + contact["github"] if not contact["github"].startswith("http") else contact["github"]
-        contact_items.append(r"\href{" + github_url + r"}{\raisebox{-0.2\height}\faGithub\ " + github_url + "}")
-
-    return r"""
-\begin{center}
-    {\Huge \scshape """ + name + r"""} \\ 
-    \small """ + " ~ ".join(contact_items) + r"""
-\end{center}
-"""
-
-def generate_about_section(resume):
-    """Generate the about section."""
-    about = resume.get("about", "")
-    return r"""
-\section{About}
-{\fontsize{10pt}{10pt}\selectfont
-""" + about + r"""
-}
-"""
-
-def generate_skills_section(resume):
-    """Generate the skills section."""
-    skills = resume.get("skills", {})
-    skills_items = []
-    
-    if "programmingLanguages" in skills:
-        skills_items.append(r"\textbf{Programming Languages:} " + ", ".join(skills["programmingLanguages"]))
-    if "frontEnd" in skills:
-        skills_items.append(r"\textbf{Web Development:} " + ", ".join(skills["frontEnd"]))
-    if "backEndFrameworks" in skills:
-        skills_items.append(r"\textbf{Back-end Frameworks:} " + ", ".join(skills["backEndFrameworks"]))
-    if "testing" in skills:
-        skills_items.append(r"\textbf{Testing \& QA:} " + ", ".join(skills["testing"]))
-    if "devOps" in skills:
-        skills_items.append(r"\textbf{DevOps \& CI/CD:} " + ", ".join(skills["devOps"]))
-    if "databases" in skills:
-        skills_items.append(r"\textbf{Databases:} " + ", ".join(skills["databases"]))
-    if "cloudTechnologies" in skills:
-        skills_items.append(r"\textbf{Cloud Technologies:} " + ", ".join(skills["cloudTechnologies"]))
-    if "additionalExpertise" in skills:
-        skills_items.append(r"\textbf{Expertise:} " + ", ".join(skills["additionalExpertise"]))
-
-    return r"""
-\section{Skills}
-\begin{itemize}[leftmargin=0.15in, label={}]
-    \small\item{ """ + r' \\'.join(skills_items) + r""" }
-\end{itemize}
-"""
-
-def generate_experience_section(resume):
-    """Generate the experience section."""
-    experiences = resume.get("experience", [])
-    experience_items = []
-    
-    for exp in experiences:
-        company = exp.get("company", "")
-        period = exp.get("employmentPeriod", "")
-        position = exp.get("position", "")
-        location = exp.get("location", "")
-        
-        exp_str = r"\resumeSubheading" + "\n" + \
-            f"      {{{company}}}{{{period}}}" + "\n" + \
-            f"      {{{position}}}{{{location}}}" + "\n" + \
-            r"      \resumeItemListStart"
-        
-        if "technologies" in exp:
-            exp_str += "\n" + \
-                r"          \resumeItem{\textbf{Technologies:} " + \
-                ", ".join(exp['technologies']) + "}"
-            
-        for resp in exp.get("responsibilities", []):
-            exp_str += "\n" + \
-                r"          \resumeItem{" + resp + "}"
-            
-        exp_str += "\n" + \
-            r"      \resumeItemListEnd"
-        experience_items.append(exp_str)
-    
-    return r"""
-\section{Experience}
-\resumeSubHeadingListStart
-""" + "\n".join(experience_items) + r"""
-\resumeSubHeadingListEnd
-"""
-
-def generate_education_section(resume):
-    """Generate the education section."""
-    education = resume.get("education", [])
-    education_items = []
-    
-    for edu in education:
-        institution = edu.get("institution", "")
-        period = edu.get("period", "")
-        degree = edu.get("degree", "")
-        location = edu.get("location", "")
-        
-        education_items.append(r"\resumeSubheading" + "\n" + \
-            f"      {{{institution}}}{{{period}}}" + "\n" + \
-            f"      {{{degree}}}{{{location}}}")
-    
-    return r"""
-\section{Education}
-\resumeSubHeadingListStart
-""" + "\n".join(education_items) + r"""
-\resumeSubHeadingListEnd
-"""
-
-def generate_projects_section(resume):
-    """Generate the projects section."""
-    projects = resume.get("projects", [])
-    project_items = []
-    
-    for proj in projects:
-        name = proj.get("name", "")
-        date = proj.get("date", "")
-        description = proj.get("description", "")
-        technologies = proj.get("technologies", [])
-        
-        project_items.append(r"\resumeProjectHeading" + "\n" + \
-            r"          {\textbf{" + name + r"} $|$ \emph{" + ", ".join(technologies) + r"}}{" + date + "}" + "\n" + \
-            r"          \resumeItemListStart" + "\n" + \
-            r"              \resumeItem{" + description + "}" + "\n" + \
-            r"          \resumeItemListEnd")
-    
-    return r"""
-\section{Projects}
-\resumeSubHeadingListStart
-""" + "\n".join(project_items) + r"""
-\resumeSubHeadingListEnd
-"""
-
-def generate_additional_section(resume):
-    """Generate the additional experiences and awards section."""
-    additional = resume.get("additionalExperiencesAndAwards", [])
-    if not additional:
-        return ""
-        
-    items = "\n".join([r"\resumeItem{" + item + "}" for item in additional])
-    
-    return r"""
-\section{Additional Experiences and Awards}
-\resumeSubHeadingListStart
-\resumeItemListStart
-""" + items + r"""
-\resumeItemListEnd
-\resumeSubHeadingListEnd
-"""
-
-def generate_latex(resume):
-    """Generate the complete LaTeX document from the resume JSON."""
-    sections = [
-        generate_header(),
-        generate_contact_section(resume),
-        generate_about_section(resume),
-        generate_skills_section(resume),
-        generate_experience_section(resume),
-        generate_education_section(resume),
-        generate_projects_section(resume),
-        generate_additional_section(resume),
-        r"\end{document}"
+    # ------------------ Skills Section ------------------
+    skills_section = []
+    skills_section.append(r"\section{Skills}")
+    skills_section.append(r"\begin{itemize}[leftmargin=0.15in, label={}]")
+    # We create one item containing a block of skills.
+    skills_section.append(r"    \small\item{ ")
+    # Define the mapping (key in JSON -> label to show)
+    skills_mapping = [
+        ("programmingLanguages", "Programming Languages"),
+        ("backEndFrameworks", "Back-end Frameworks"),
+        ("frontEnd", "Front-end"),
+        ("testing", "Testing \& QA"),
+        ("devOps", "DevOps \& CI/CD"),
+        ("databases", "Databases"),
+        ("cloudTechnologies", "Cloud Technologies"),
+        ("additionalExpertise", "Expertise")
     ]
+    skill_lines = []
+    for key, label in skills_mapping:
+        items = data.get("skills", {}).get(key, [])
+        if items:
+            # Escape each item in the list.
+            escaped_items = [escape_latex(item) for item in items]
+            line = f"\\textbf{{{label}:}} " + ", ".join(escaped_items)
+            skill_lines.append(line)
+    # Join the lines with LaTeX line breaks.
+    skills_section.append(" \\\\ ".join(skill_lines) + " }")
+    skills_section.append(r"\end{itemize}")
+    skills_section.append("")
+
+    # ------------------ Experience Section ------------------
+    experience_section = []
+    experience_section.append(r"\section{Experience}")
+    experience_section.append(r"\resumeSubHeadingListStart")
+    experiences = data.get("experience", [])
+    for exp in experiences:
+        company = escape_latex(exp.get("company", ""))
+        period = escape_latex(exp.get("employmentPeriod", ""))
+        position = escape_latex(exp.get("position", ""))
+        location = escape_latex(exp.get("location", "")) if exp.get("location") else ""
+        experience_section.append(r"\resumeSubheading")
+        experience_section.append(f"      {{{company}}}{{{period}}}")
+        experience_section.append(f"      {{{position}}}{{{location}}}")
+        experience_section.append(r"      \resumeItemListStart")
+        # First line: list the technologies used (if available).
+        technologies = exp.get("technologies", [])
+        if technologies:
+            escaped_tech = [escape_latex(tech) for tech in technologies]
+            tech_line = "\\textbf{Technologies:} " + ", ".join(escaped_tech)
+            experience_section.append(f"          \\resumeItem{{{tech_line}}}")
+        # List each responsibility.
+        for resp in exp.get("responsibilities", []):
+            experience_section.append(f"          \\resumeItem{{{escape_latex(resp)}}}")
+        experience_section.append(r"      \resumeItemListEnd")
+    experience_section.append(r"\resumeSubHeadingListEnd")
+    experience_section.append("")
+
+    # ------------------ Education Section ------------------
+    education_section = []
+    education_section.append(r"\section{Education}")
+    education_section.append(r"\resumeSubHeadingListStart")
+    for edu in data.get("education", []):
+        institution = escape_latex(edu.get("institution", ""))
+        # Replace unicode dash with LaTeX-friendly --
+        period = escape_latex(edu.get("period", "").replace("\u2013", "--"))
+        degree = escape_latex(edu.get("degree", ""))
+        location = escape_latex(edu.get("location", ""))
+        education_section.append(r"\resumeSubheading")
+        education_section.append(f"      {{{institution}}}{{{period}}}")
+        education_section.append(f"      {{{degree}}}{{{location}}}")
+    education_section.append(r"\resumeSubHeadingListEnd")
+    education_section.append("")
+
+    # ------------------ Projects Section ------------------
+    projects_section = []
+    projects_section.append(r"\section{Projects}")
+    projects_section.append(r"\resumeSubHeadingListStart")
+    for proj in data.get("projects", []):
+        proj_name = escape_latex(proj.get("name", ""))
+        proj_date = escape_latex(proj.get("date", ""))
+        proj_description = escape_latex(proj.get("description", ""))
+        proj_tech = proj.get("technologies", [])
+        if proj_tech:
+            escaped_proj_tech = [escape_latex(t) for t in proj_tech]
+            tech_str = ", ".join(escaped_proj_tech)
+        else:
+            tech_str = ""
+        projects_section.append(r"\resumeProjectHeading")
+        projects_section.append(f"          {{\\textbf{{{proj_name}}} $|$ \\emph{{{tech_str}}}}}{{{proj_date}}}")
+        projects_section.append(r"          \resumeItemListStart")
+        projects_section.append(f"              \\resumeItem{{{proj_description}}}")
+        projects_section.append(r"          \resumeItemListEnd")
+    projects_section.append(r"\resumeSubHeadingListEnd")
+    projects_section.append("")
+
+    # ------------------ Additional Experiences and Awards ------------------
+    additional_section = []
+    additional_section.append(r"\section{Additional Experiences and Awards}")
+    additional_section.append(r"\resumeSubHeadingListStart")
+    additional_section.append(r"\resumeItemListStart")
+    for item in data.get("additionalExperiencesAndAwards", []):
+        additional_section.append(f"\\resumeItem{{{escape_latex(item)}}}")
+    additional_section.append(r"\resumeItemListEnd")
+    additional_section.append(r"\resumeSubHeadingListEnd")
+    additional_section.append("")
+
+    # ------------------ Combine Everything into the Full Document ------------------
+    lines = []
+    lines.append(r"\documentclass[letterpaper,10.5pt]{article}")
+    lines.append("")
+    lines.append(r"\usepackage[empty]{fullpage}")
+    lines.append(r"\usepackage{titlesec}")
+    lines.append(r"\usepackage[usenames,dvipsnames]{color}")
+    lines.append(r"\usepackage{enumitem}")
+    lines.append(r"\usepackage[hidelinks]{hyperref}")
+    lines.append(r"\usepackage{fancyhdr}")
+    lines.append(r"\usepackage[english]{babel}")
+    lines.append(r"\usepackage{tabularx}")
+    lines.append(r"\usepackage{fontawesome5}")
+    lines.append(r"\usepackage{multicol}")
+    lines.append(r"\setlength{\multicolsep}{-3.0pt}")
+    lines.append(r"\setlength{\columnsep}{-1pt}")
+    lines.append(r"\input{glyphtounicode}")
+    lines.append("")
+    lines.append(r"\pagestyle{fancy}")
+    lines.append(r"\fancyhf{}")
+    lines.append(r"\fancyfoot{}")
+    lines.append(r"\renewcommand{\headrulewidth}{0pt}")
+    lines.append(r"\renewcommand{\footrulewidth}{0pt}")
+    lines.append("")
+    lines.append(r"\addtolength{\oddsidemargin}{-0.6in}")
+    lines.append(r"\addtolength{\evensidemargin}{-0.5in}")
+    lines.append(r"\addtolength{\textwidth}{1.19in}")
+    lines.append(r"\addtolength{\topmargin}{-0.7in}")
+    lines.append(r"\addtolength{\textheight}{1.4in}")
+    lines.append("")
+    lines.append(r"\urlstyle{same}")
+    lines.append(r"\raggedbottom")
+    lines.append(r"\raggedright")
+    lines.append(r"\setlength{\tabcolsep}{0in}")
+    lines.append("")
+    lines.append(r"\titleformat{\section}{")
+    lines.append(r"  \scshape\raggedright\large\bfseries")
+    lines.append(r"}{}{0em}{}[\color{black}\titlerule]")
+    lines.append("")
+    lines.append(r"\pdfgentounicode=1")
+    lines.append("")
+    lines.append(r"\newcommand{\resumeItem}[1]{%")
+    lines.append(r"  \item\small{#1}")
+    lines.append(r"}")
+    lines.append("")
+    lines.append(r"\newcommand{\classesList}[4]{%")
+    lines.append(r"  \item\small{#1 #2 #3 #4}")
+    lines.append(r"}")
+    lines.append("")
+    lines.append(r"\newcommand{\resumeSubheading}[4]{%")
+    lines.append(r"  \item")
+    lines.append(r"  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}")
+    lines.append(r"    \textbf{#1} & \textbf{\small #2} \\")
+    lines.append(r"    \textit{\small #3} & \textit{\small #4} \\")
+    lines.append(r"  \end{tabular*}")
+    lines.append(r"}")
+    lines.append("")
+    lines.append(r"\newcommand{\resumeSubSubheading}[2]{%")
+    lines.append(r"  \item")
+    lines.append(r"  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}")
+    lines.append(r"    \textit{\small #1} & \textit{\small #2} \\")
+    lines.append(r"  \end{tabular*}")
+    lines.append(r"}")
+    lines.append("")
+    lines.append(r"\newcommand{\resumeProjectHeading}[2]{%")
+    lines.append(r"  \item")
+    lines.append(r"  \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}")
+    lines.append(r"    \small #1 & \textbf{\small #2} \\")
+    lines.append(r"  \end{tabular*}")
+    lines.append(r"}")
+    lines.append("")
+    lines.append(r"\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}")
+    lines.append("")
+    lines.append(r"\renewcommand\labelitemi{{$\vcenter{\hbox{\tiny$\bullet$}}$}}")
+    lines.append(r"\renewcommand\labelitemii{{$\vcenter{\hbox{\tiny$\bullet$}}$}}")
+    lines.append("")
+    lines.append(r"\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}")
+    lines.append(r"\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}")
+    lines.append(r"\newcommand{\resumeItemListStart}{\begin{itemize}}")
+    lines.append(r"\newcommand{\resumeItemListEnd}{\end{itemize}}")
+    lines.append("")
+    lines.append(r"\begin{document}")
+    lines.append("")
     
-    return '\n'.join(sections)
+    # Append all sections in order
+    lines.extend(header)
+    lines.extend(about_section)
+    lines.extend(skills_section)
+    lines.extend(experience_section)
+    lines.extend(education_section)
+    lines.extend(projects_section)
+    lines.extend(additional_section)
+    lines.append(r"\end{document}")
+    
+    return "\n".join(lines)

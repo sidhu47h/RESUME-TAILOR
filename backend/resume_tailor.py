@@ -104,6 +104,7 @@ def generate_resume():
         
         # Generate LaTeX using the resume_stitcher
         latex_resume = generate_latex(tailored_resume)
+        print(latex_resume)
         
         # Return both JSON and LaTeX versions
         return jsonify({
