@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './App.css'; // Ensure you have some basic styles
 import MockData from './MockData';
-import * as latex from 'latex.js';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+
 
 function App() {
   const [jobDescription, setJobDescription] = useState('');
@@ -28,78 +26,78 @@ function App() {
     }
   };
 
-  const generatePDF = async () => {
-    if (!response?.latex) return;
+//   const generatePDF = async () => {
+//     if (!response?.latex) return;
   
-    // Start with the raw LaTeX content from the response.
-    let latexContent = response.latex;
+//     // Start with the raw LaTeX content from the response.
+//     let latexContent = response.latex;
   
-    // Remove problematic package imports.
-    const packagesToRemove = [
-      'fullpage',
-      'titlesec',
-      'enumitem',
-      'fancyhdr',
-      'babel',
-      'tabularx',
-      'fontawesome5'
-    ];
-    packagesToRemove.forEach(pkg => {
-      const regex = new RegExp(`\\\\usepackage(?:\\[[^\\]]*\\])?\\{[^}]*${pkg}[^}]*\\}`, 'g');
-      latexContent = latexContent.replace(regex, '');
-    });
-    // Remove problematic length definitions.
-    latexContent = latexContent.replace(/\\setlength\{\\multicolsep\}\{[^}]*\}/g, '');
+//     // Remove problematic package imports.
+//     const packagesToRemove = [
+//       'fullpage',
+//       'titlesec',
+//       'enumitem',
+//       'fancyhdr',
+//       'babel',
+//       'tabularx',
+//       'fontawesome5'
+//     ];
+//     packagesToRemove.forEach(pkg => {
+//       const regex = new RegExp(`\\\\usepackage(?:\\[[^\\]]*\\])?\\{[^}]*${pkg}[^}]*\\}`, 'g');
+//       latexContent = latexContent.replace(regex, '');
+//     });
+//     // Remove problematic length definitions.
+//     latexContent = latexContent.replace(/\\setlength\{\\multicolsep\}\{[^}]*\}/g, '');
   
-    // If the LaTeX does not include a document class, wrap it in a minimal document.
-    if (!/\\documentclass/.test(latexContent)) {
-      latexContent = `\\documentclass{article}
-  \\usepackage[utf8]{inputenc}
-  \\begin{document}
-  ${latexContent.trim()}
-  \\end{document}`;
-    }
+//     // If the LaTeX does not include a document class, wrap it in a minimal document.
+//     if (!/\\documentclass/.test(latexContent)) {
+//       latexContent = `\\documentclass{article}
+//   \\usepackage[utf8]{inputenc}
+//   \\begin{document}
+//   ${latexContent.trim()}
+//   \\end{document}`;
+//     }
   
-    console.log('Cleaned & Wrapped LaTeX Content:', latexContent);
+//     console.log('Cleaned & Wrapped LaTeX Content:', latexContent);
   
-    try {
-      // Convert the (now wrapped) LaTeX into HTML using latex.js.
-      const generator = new latex.HtmlGenerator({ hyphenate: false });
-      latex.parse(latexContent, { generator });
-      const htmlFragment = generator.documentFragment();
+//     try {
+//       // Convert the (now wrapped) LaTeX into HTML using latex.js.
+//       const generator = new latex.HtmlGenerator({ hyphenate: false });
+//       latex.parse(latexContent, { generator });
+//       const htmlFragment = generator.documentFragment();
   
-      // Create an off-screen container to render the HTML.
-      const container = document.createElement('div');
-      container.style.position = 'absolute';
-      container.style.left = '-9999px';
-      container.appendChild(htmlFragment);
-      document.body.appendChild(container);
+//       // Create an off-screen container to render the HTML.
+//       const container = document.createElement('div');
+//       container.style.position = 'absolute';
+//       container.style.left = '-9999px';
+//       container.appendChild(htmlFragment);
+//       document.body.appendChild(container);
   
-      // Use html2canvas to capture the rendered HTML as an image.
-      const canvas = await html2canvas(container);
-      const imgData = canvas.toDataURL('image/png');
+//       // Use html2canvas to capture the rendered HTML as an image.
+//       const canvas = await html2canvas(container);
+//       const imgData = canvas.toDataURL('image/png');
   
-      // Create a PDF using jsPDF.
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'pt',
-        format: 'a4'
-      });
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const canvasWidth = canvas.width;
-      const canvasHeight = canvas.height;
-      const imgWidth = pageWidth;
-      const imgHeight = (canvasHeight * imgWidth) / canvasWidth;
+//       // Create a PDF using jsPDF.
+//       const pdf = new jsPDF({
+//         orientation: 'portrait',
+//         unit: 'pt',
+//         format: 'a4'
+//       });
+//       const pageWidth = pdf.internal.pageSize.getWidth();
+//       const canvasWidth = canvas.width;
+//       const canvasHeight = canvas.height;
+//       const imgWidth = pageWidth;
+//       const imgHeight = (canvasHeight * imgWidth) / canvasWidth;
   
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save('resume.pdf');
+//       pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+//       pdf.save('resume.pdf');
   
-      // Clean up the temporary container.
-      document.body.removeChild(container);
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-    }
-  };
+//       // Clean up the temporary container.
+//       document.body.removeChild(container);
+//     } catch (error) {
+//       console.error('Error generating PDF:', error);
+//     }
+//   };
   
   
   
@@ -126,7 +124,7 @@ function App() {
         </div>
         <div className="response-section">
           <h2>Raw LaTeX</h2>
-          <div className="latex-header">
+          {/* <div className="latex-header">
             <button 
               onClick={generatePDF}
               disabled={!response?.latex}
@@ -134,7 +132,7 @@ function App() {
             >
               Generate PDF
             </button>
-          </div>
+          </div> */}
           <pre className="latex-content">
             {response?.latex ? String(response.latex) : 'No LaTeX content yet'}
           </pre>
