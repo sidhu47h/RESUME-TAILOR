@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.0",
+    "katex": "^0.16.21",
     "latex.js": "^0.12.6",
     "pdfmake": "^0.2.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-katex": "^3.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^8.56.0",
