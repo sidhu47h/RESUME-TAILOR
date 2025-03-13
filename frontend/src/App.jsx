@@ -10,16 +10,16 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        // const res = await fetch('http://127.0.0.1:5000/generate-resume', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ description: jobDescription }), // This handles escaping
-        //     });
-        //     const data = await res.json();
+        const res = await fetch('https://resume-tailor-backend.vercel.app/generate-resume', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ description: jobDescription }), // This handles escaping
+            });
+            const data = await res.json();
       // For testing, we're using mock data. Replace with your API call as needed.
-      const data = MockData;
+    //   const data = MockData;
       setResponse(data); // Adjust based on your response structure
     } catch (error) {
       console.error('Error:', error);
